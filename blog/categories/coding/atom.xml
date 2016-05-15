@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Coding | Ram's Blog]]></title>
   <link href="http://ramvellanki.github.io/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://ramvellanki.github.io/"/>
-  <updated>2016-05-15T18:27:32+05:30</updated>
+  <updated>2016-05-15T20:07:15+05:30</updated>
   <id>http://ramvellanki.github.io/</id>
   <author>
     <name><![CDATA[Ram Vellanki]]></name>
@@ -18,9 +18,7 @@
     <link href="http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk/"/>
     <updated>2016-05-15T18:24:23+05:30</updated>
     <id>http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk</id>
-    <content type="html"><![CDATA[<h2>Working with Casablanca</h2>
-
-<p><em>Casablanca</em> is also known as <a href="github.com/microsoft/cpprestsdk">CPPRESTSDK</a></p>
+    <content type="html"><![CDATA[<p><em>Casablanca</em> is also known as <a href="github.com/microsoft/cpprestsdk">CPPRESTSDK</a></p>
 ]]></content>
   </entry>
   
