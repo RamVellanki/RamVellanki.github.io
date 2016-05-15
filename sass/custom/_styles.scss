@@ -1,2 +1,28 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+$primary-color: #9b59b6;
+$color-banner: #2c3e50;
+$color-blue: #3498db;
+$color-alizrin: #e74c3c;
+$color-orange: #d35400;
+$color-carrot: #e67e22;
+$color-greensea: #16a085;
+$whitish-background: #FFFFF0;
+
+header[role='banner']{
+    background: $color-banner;
+}
+#recentpostshead{
+    text-transform: capitalize;
+}
+.post {
+    list-style-type: none;
+    border-radius: 5px;
+}
+.post>a{
+    text-decoration: none;
+    color: $color-greensea;
+}
+.post>a:hover{
+    color: $color-blue;
+}

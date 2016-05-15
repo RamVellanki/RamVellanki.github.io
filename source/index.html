@@ -1,8 +1,15 @@
 ---
-layout: page
-title: "index"
-date: 2016-05-15 12:28
-comments: true
-sharing: true
-footer: true
+layout: index
+title: ""
 ---
+<section>
+  <h1 id="recentpostshead">Recent Posts</h1>
+  <ul id="recent_posts">
+    {% for post in site.posts limit: site.recent_posts %}
+      <li class="post">
+        <a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
