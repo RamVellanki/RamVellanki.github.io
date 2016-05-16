@@ -2,13 +2,13 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk/</loc>
-<lastmod>2016-05-15T18:24:23+05:30</lastmod>
-</url>
-<url>
-<loc>http://ramvellanki.github.io/blog/archives/</loc>
+<lastmod>2016-05-15T12:54:23+00:00</lastmod>
 </url>
 <url>
 <loc>http://ramvellanki.github.io/blog/</loc>
+</url>
+<url>
+<loc>http://ramvellanki.github.io/blog/archives/</loc>
 </url>
 <url>
 <loc>http://ramvellanki.github.io/</loc>
