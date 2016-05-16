@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C++, | Ram's Blog]]></title>
   <link href="http://ramvellanki.github.io/blog/categories/c-plus-plus/atom.xml" rel="self"/>
   <link href="http://ramvellanki.github.io/"/>
-  <updated>2016-05-16T07:04:14+00:00</updated>
+  <updated>2016-05-16T07:15:11+00:00</updated>
   <id>http://ramvellanki.github.io/</id>
   <author>
     <name><![CDATA[Ram Vellanki]]></name>
@@ -103,34 +103,12 @@ pplx::task&lt;void&gt; RequestJSONValueAsync()
 
 }
 
-
-
-void IterateJSONValue()
-{
-    // Create a JSON object.
-    json::value obj;
-    obj[L"key1"] = json::value::boolean(false);
-    obj[L"key2"] = json::value::number(44);
-    obj[L"key3"] = json::value::number(43.6);
-    obj[L"key4"] = json::value::string(U("str"));
-
-    // Loop over each element in the object. 
-    for(auto iter = obj.cbegin(); iter != obj.cend(); ++iter)
-    {
-        const json::value &amp;str = iter-&gt;first;
-        const json::value &amp;v = iter-&gt;second;
-
-        std::wcout &lt;&lt; L"String: " &lt;&lt; str.as_string() &lt;&lt; L", Value: " &lt;&lt; v.to_string() &lt;&lt; endl;
-    }
-}
-
 int wmain()
 {
     wcout &lt;&lt; L"Calling RequestJSONValueAsync..." &lt;&lt; endl;
     RequestJSONValueAsync().wait();
 
     wcout &lt;&lt; L"Calling IterateJSONValue..." &lt;&lt; endl;
-    IterateJSONValue();
 }
 </code></pre>
 
