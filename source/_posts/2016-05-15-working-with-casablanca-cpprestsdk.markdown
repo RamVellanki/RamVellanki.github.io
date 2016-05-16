@@ -118,7 +118,7 @@ int wmain()
 ```
 As shown, I have used `jsontest` for testing the json. Running this code, should generate the following output.
 
-![Output](https://onedrive.live.com/redir?resid=A344D3A301F31A3!77019&authkey=!AM7Pxil3qNBKR5k&v=3&ithint=photo%2cpng)
+![Output](https://pli7vg-sn3302.files.1drv.com/y3m79nzKN9U_Po3U72nal0DwxcmF121J4q5wwx4eboETjCLj_-YHGVsAIClaJOC4QCZ8BJAZaf8XSoWkMkyKPkHHiAUpvmAKIij9NydCNaC8Cfpo0PbvQQxisRkUp2vGupQGn0YlJRiZvhFnZHTL2Bzn05z4tSDy1nia3SzQl9LWxc?width=418&height=72&cropmode=none)
 ### Gotchas#
 * One issue that one may face while setting up a project using CPPRESTSDK is that it requires VS120 toolset. So, make sure in project -> properties, the correct platform toolset is updated in Visual Studio.
 
