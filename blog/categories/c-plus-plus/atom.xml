@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C++, | Ram's Blog]]></title>
   <link href="http://ramvellanki.github.io/blog/categories/c-plus-plus/atom.xml" rel="self"/>
   <link href="http://ramvellanki.github.io/"/>
-  <updated>2016-05-16T06:37:44+00:00</updated>
+  <updated>2016-05-16T06:52:11+00:00</updated>
   <id>http://ramvellanki.github.io/</id>
   <author>
     <name><![CDATA[Ram Vellanki]]></name>
@@ -18,8 +18,140 @@
     <link href="http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk/"/>
     <updated>2016-05-15T12:54:23+00:00</updated>
     <id>http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk</id>
-    <content type="html"><![CDATA[<p><em>Casablanca</em> is also known as <a href="github.com/microsoft/cpprestsdk">CPPRESTSDK</a>
-Test from Cloud9</p>
+    <content type="html"><![CDATA[<h1>Casablanca</h1>
+
+<p><em>C++ meets WebServices</em></p>
+
+<h3>Introduction</h3>
+
+<p>Calling a WebService and processing the response, is pretty much an easy task, especially if you are programming using Java, C# or JavaScript or any of the modern programming languages. But, recently someone asked me about how to the same using C++ and in particular with Visual C++. Though, I have worked on Visual C++ and MFC in particular, I have never tried calling a WebService from VC++. So, a quick google search on this pointed me towards Casablanca.</p>
+
+<h3>What?</h3>
+
+<p>So, what is Casablanca?
+Casablanca is a Microsoft&rsquo;s project for cloud-based client-server communication. Casablanca is also known as C++ REST SDK. This SDK helps C++ developers to connect to services.</p>
+
+<h3>How?</h3>
+
+<p>How do we use C++ REST SDK?
+After visiting, <a href="https://github.com/microsoft/cpprestsdk">Casablanca</a> official github page, I found a tutorial for <a href="https://github.com/microsoft/cpprestsdk">quick start</a>. Following the tutorial, I came up with the following code:</p>
+
+<pre><code>#include &lt;cpprest/http_client.h&gt;
+#include &lt;cpprest/filestream.h&gt;
+#include &lt;cpprest/json.h&gt;
+#include &lt;iosfwd&gt;
+#include &lt;iostream&gt;
+using namespace web;
+using namespace web::http;
+using namespace web::http::client;
+using namespace std;
+
+// Retrieves a JSON value from an HTTP request.
+pplx::task&lt;void&gt; RequestJSONValueAsync()
+{
+    http_client client(U("http://date.jsontest.com/"));
+    return client.request(methods::GET).then([](http_response response) -&gt; pplx::task&lt;json::value&gt;
+    {
+        if(response.status_code() == status_codes::OK)
+        {
+            return response.extract_json();
+        }
+
+        // Handle error cases, for now return empty json value... 
+        return pplx::task_from_result(json::value());
+    })
+        .then([](pplx::task&lt;json::value&gt; previousTask)
+    {
+        try
+        {
+            const json::value&amp; v = previousTask.get();
+            // Perform actions here to process the JSON value...
+            if (!v.is_null())
+            {
+                for (auto iter = v.cbegin(); iter != v.cend(); ++iter)
+                {
+                    const json::value &amp;key = iter-&gt;first;
+                    const json::value &amp;value = iter-&gt;second;
+
+                    if (value.is_object() || value.is_array())
+                    {
+                        if ((!key.is_null()) &amp;&amp; (key.is_string()))
+                        {
+                            std::wcout &lt;&lt; L"Parent: " &lt;&lt; key.as_string() &lt;&lt; std::endl;
+                        }
+                        if ((!key.is_null()) &amp;&amp; (key.is_string()))
+                        {
+                            std::wcout &lt;&lt; L"End of Parent: " &lt;&lt; key.as_string() &lt;&lt; std::endl;
+                        }
+                    }
+                    else
+                    {
+                        std::wcout &lt;&lt; L"Key: " &lt;&lt; key.as_string() &lt;&lt; L", Value: " &lt;&lt; value.to_string() &lt;&lt; std::endl;
+                    }
+                }
+            }
+
+        }
+        catch (const http_exception&amp; e)
+        {
+            // Print error.
+            wostringstream ss;
+            ss &lt;&lt; e.what() &lt;&lt; endl;
+            wcout &lt;&lt; ss.str();
+        }
+    });
+
+}
+
+
+
+void IterateJSONValue()
+{
+    // Create a JSON object.
+    json::value obj;
+    obj[L"key1"] = json::value::boolean(false);
+    obj[L"key2"] = json::value::number(44);
+    obj[L"key3"] = json::value::number(43.6);
+    obj[L"key4"] = json::value::string(U("str"));
+
+    // Loop over each element in the object. 
+    for(auto iter = obj.cbegin(); iter != obj.cend(); ++iter)
+    {
+        const json::value &amp;str = iter-&gt;first;
+        const json::value &amp;v = iter-&gt;second;
+
+        std::wcout &lt;&lt; L"String: " &lt;&lt; str.as_string() &lt;&lt; L", Value: " &lt;&lt; v.to_string() &lt;&lt; endl;
+    }
+}
+
+int wmain()
+{
+    wcout &lt;&lt; L"Calling RequestJSONValueAsync..." &lt;&lt; endl;
+    RequestJSONValueAsync().wait();
+
+    wcout &lt;&lt; L"Calling IterateJSONValue..." &lt;&lt; endl;
+    IterateJSONValue();
+}
+</code></pre>
+
+<p>As shown, I have used <code>jsontest</code> for testing the json. Running this code, should generate the following output.</p>
+
+<p><img src="https://onedrive.live.com/redir?resid=A344D3A301F31A3!77019&amp;authkey=!AM7Pxil3qNBKR5k&amp;v=3&amp;ithint=photo%2cpng" alt="Output" /></p>
+
+<h3>Gotchas</h3>
+
+<ul>
+<li>One issue that one may face while setting up a project using CPPRESTSDK is that it requires VS120 toolset. So, make sure in project -> properties, the correct platform toolset is updated in Visual Studio.</li>
+</ul>
+
+
+<h3>Next Steps</h3>
+
+<p>This was a simple example that I have created for quick demo. But, Casablanca has lot of other features that can be used. Following are some of the important features:
+* This has support for <a href="https://github.com/Microsoft/cpprestsdk/wiki/Web-Socket">Web Sockets</a>
+* This also supports multiple platforms including Linux and Mac.</p>
+
+<p>For more features and samples visit Casablanca&rsquo;s official <a href="https://github.com/Microsoft/cpprestsdk/wiki">wiki</a>.</p>
 ]]></content>
   </entry>
   
