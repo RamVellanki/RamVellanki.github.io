@@ -4,7 +4,7 @@
   <title><![CDATA[Ram's Blog]]></title>
   <link href="http://ramvellanki.github.io/atom.xml" rel="self"/>
   <link href="http://ramvellanki.github.io/"/>
-  <updated>2016-05-16T07:15:11+00:00</updated>
+  <updated>2016-05-17T16:03:21+00:00</updated>
   <id>http://ramvellanki.github.io/</id>
   <author>
     <name><![CDATA[Ram Vellanki]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Angular2 Seed Project]]></title>
+    <link href="http://ramvellanki.github.io/blog/2016/05/17/angular2-seed-project/"/>
+    <updated>2016-05-17T15:56:22+00:00</updated>
+    <id>http://ramvellanki.github.io/blog/2016/05/17/angular2-seed-project</id>
+    <content type="html"><![CDATA[<p>I have been working with Angular2 since it&rsquo;s beta.12 and as Angular2 RC1 got released, I thought of creating a Seed project.</p>
+
+<p><a href="">Here</a> is the link to the seed project.</p>
+
+<p>Following are the features available in this repository:
+* Material2 - Toolbar and Button are included but any other component can be added easily.
+* Karma - Basic Karma TDD setup is ready that can be used.
+* Protractor - Basic Protractor setup is ready for end to end testing.
+* ExpressJS - The project uses ExpressJS.</p>
+
+<p>The repository uses <code>gulp</code> and following <code>npm</code> tasks are available:
+* <code>npm run dev</code> - Starts the project in Development mode.
+* <code>npm run prod</code> - Starts the project in Production mode.
+* <code>npm run test</code> - Runs Unit Tests.
+* <code>npm run e2e</code> - Runs end to end Tests.</p>
+
+<hr />
+
+<h3>Next Steps</h3>
+
+<p>I am also working on a JSPM Seed project and will post it sometime soon.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Working With Casablanca (CPPRESTSDK)]]></title>
