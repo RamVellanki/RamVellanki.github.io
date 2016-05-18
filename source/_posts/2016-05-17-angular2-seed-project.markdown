@@ -7,7 +7,7 @@ categories:
 ---
 I have been working with Angular2 since it's beta.12 and as Angular2 RC1 got released, I thought of creating a Seed project.
 
-[Here]() is the link to the seed project.
+[Here](https://github.com/RamVellanki/ng2-material-tdd-e2e-seed) is the link to the seed project.
 
 Following are the features available in this repository:
 * Material2 - Toolbar and Button are included but any other component can be added easily.
