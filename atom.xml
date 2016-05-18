@@ -4,7 +4,7 @@
   <title><![CDATA[Ram's Blog]]></title>
   <link href="http://ramvellanki.github.io/atom.xml" rel="self"/>
   <link href="http://ramvellanki.github.io/"/>
-  <updated>2016-05-17T16:03:21+00:00</updated>
+  <updated>2016-05-18T17:19:54+00:00</updated>
   <id>http://ramvellanki.github.io/</id>
   <author>
     <name><![CDATA[Ram Vellanki]]></name>
@@ -20,7 +20,7 @@
     <id>http://ramvellanki.github.io/blog/2016/05/17/angular2-seed-project</id>
     <content type="html"><![CDATA[<p>I have been working with Angular2 since it&rsquo;s beta.12 and as Angular2 RC1 got released, I thought of creating a Seed project.</p>
 
-<p><a href="">Here</a> is the link to the seed project.</p>
+<p><a href="https://github.com/RamVellanki/ng2-material-tdd-e2e-seed">Here</a> is the link to the seed project.</p>
 
 <p>Following are the features available in this repository:
 * Material2 - Toolbar and Button are included but any other component can be added easily.
