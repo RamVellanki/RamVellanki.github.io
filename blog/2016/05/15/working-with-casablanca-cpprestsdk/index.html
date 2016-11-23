@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Working With Casablanca (CPPRESTSDK) - Ram's Blog</title>
+  <meta name="author" content="Ram Vellanki">
+
+  
+  <meta name="description" content="Casablanca C++ meets WebServices Introduction Calling a WebService and processing the response, is pretty much an easy task, especially if you are &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ram's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ram's Blog</a></h1>
+  
+    <h2>My thoughts and work.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="ramvellanki.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Working With Casablanca (CPPRESTSDK)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-05-15T12:54:23+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:54 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>Casablanca</h1>
+
+<p><em>C++ meets WebServices</em></p>
+
+<h3>Introduction</h3>
+
+<p>Calling a WebService and processing the response, is pretty much an easy task, especially if you are programming using Java, C# or JavaScript or any of the modern programming languages. But, recently someone asked me about how to the same using C++ and in particular with Visual C++. Though, I have worked on Visual C++ and MFC in particular, I have never tried calling a WebService from VC++. So, a quick google search on this pointed me towards Casablanca.</p>
+
+<h3>What?</h3>
+
+<p>So, what is Casablanca?
+Casablanca is a Microsoft&rsquo;s project for cloud-based client-server communication. Casablanca is also known as C++ REST SDK. This SDK helps C++ developers to connect to services.</p>
+
+<h3>How?</h3>
+
+<p>How do we use C++ REST SDK?
+After visiting, <a href="https://github.com/microsoft/cpprestsdk">Casablanca</a> official github page, I found a tutorial for <a href="https://github.com/microsoft/cpprestsdk">quick start</a>. Following the tutorial, I came up with the following code:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#include &lt;cpprest/http_client.h&gt;
+</span><span class='line'>#include &lt;cpprest/filestream.h&gt;
+</span><span class='line'>#include &lt;cpprest/json.h&gt;
+</span><span class='line'>#include &lt;iosfwd&gt;
+</span><span class='line'>#include &lt;iostream&gt;
+</span><span class='line'>using namespace web;
+</span><span class='line'>using namespace web::http;
+</span><span class='line'>using namespace web::http::client;
+</span><span class='line'>using namespace std;
+</span><span class='line'>
+</span><span class='line'>// Retrieves a JSON value from an HTTP request.
+</span><span class='line'>pplx::task&lt;void&gt; RequestJSONValueAsync()
+</span><span class='line'>{
+</span><span class='line'>  http_client client(U("http://date.jsontest.com/"));
+</span><span class='line'>    return client.request(methods::GET).then([](http_response response) -&gt; pplx::task&lt;json::value&gt;
+</span><span class='line'>    {
+</span><span class='line'>        if(response.status_code() == status_codes::OK)
+</span><span class='line'>        {
+</span><span class='line'>            return response.extract_json();
+</span><span class='line'>        }
+</span><span class='line'>
+</span><span class='line'>        // Handle error cases, for now return empty json value... 
+</span><span class='line'>        return pplx::task_from_result(json::value());
+</span><span class='line'>    })
+</span><span class='line'>        .then([](pplx::task&lt;json::value&gt; previousTask)
+</span><span class='line'>    {
+</span><span class='line'>        try
+</span><span class='line'>        {
+</span><span class='line'>            const json::value& v = previousTask.get();
+</span><span class='line'>            // Perform actions here to process the JSON value...
+</span><span class='line'>          if (!v.is_null())
+</span><span class='line'>          {
+</span><span class='line'>              for (auto iter = v.cbegin(); iter != v.cend(); ++iter)
+</span><span class='line'>              {
+</span><span class='line'>                  const json::value &key = iter-&gt;first;
+</span><span class='line'>                  const json::value &value = iter-&gt;second;
+</span><span class='line'>
+</span><span class='line'>                  if (value.is_object() || value.is_array())
+</span><span class='line'>                  {
+</span><span class='line'>                      if ((!key.is_null()) && (key.is_string()))
+</span><span class='line'>                      {
+</span><span class='line'>                          std::wcout &lt;&lt; L"Parent: " &lt;&lt; key.as_string() &lt;&lt; std::endl;
+</span><span class='line'>                      }
+</span><span class='line'>                      if ((!key.is_null()) && (key.is_string()))
+</span><span class='line'>                      {
+</span><span class='line'>                          std::wcout &lt;&lt; L"End of Parent: " &lt;&lt; key.as_string() &lt;&lt; std::endl;
+</span><span class='line'>                      }
+</span><span class='line'>                  }
+</span><span class='line'>                  else
+</span><span class='line'>                  {
+</span><span class='line'>                      std::wcout &lt;&lt; L"Key: " &lt;&lt; key.as_string() &lt;&lt; L", Value: " &lt;&lt; value.to_string() &lt;&lt; std::endl;
+</span><span class='line'>                  }
+</span><span class='line'>              }
+</span><span class='line'>          }
+</span><span class='line'>
+</span><span class='line'>        }
+</span><span class='line'>        catch (const http_exception& e)
+</span><span class='line'>        {
+</span><span class='line'>            // Print error.
+</span><span class='line'>            wostringstream ss;
+</span><span class='line'>            ss &lt;&lt; e.what() &lt;&lt; endl;
+</span><span class='line'>            wcout &lt;&lt; ss.str();
+</span><span class='line'>        }
+</span><span class='line'>    });
+</span><span class='line'>
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>int wmain()
+</span><span class='line'>{
+</span><span class='line'>    wcout &lt;&lt; L"Calling RequestJSONValueAsync..." &lt;&lt; endl;
+</span><span class='line'>    RequestJSONValueAsync().wait();
+</span><span class='line'>
+</span><span class='line'>    wcout &lt;&lt; L"Calling IterateJSONValue..." &lt;&lt; endl;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As shown, I have used <code>jsontest</code> for testing the json. Running this code, should generate the following output.</p>
+
+<p><img src="https://pli7vg-sn3302.files.1drv.com/y3m79nzKN9U_Po3U72nal0DwxcmF121J4q5wwx4eboETjCLj_-YHGVsAIClaJOC4QCZ8BJAZaf8XSoWkMkyKPkHHiAUpvmAKIij9NydCNaC8Cfpo0PbvQQxisRkUp2vGupQGn0YlJRiZvhFnZHTL2Bzn05z4tSDy1nia3SzQl9LWxc?width=418&amp;height=72&amp;cropmode=none" alt="Output" /></p>
+
+<h3>Gotchas</h3>
+
+<ul>
+<li>One issue that one may face while setting up a project using CPPRESTSDK is that it requires VS120 toolset. So, make sure in project -> properties, the correct platform toolset is updated in Visual Studio.</li>
+</ul>
+
+
+<h3>Next Steps</h3>
+
+<p>This was a simple example that I have created for quick demo. But, Casablanca has lot of other features that can be used. Following are some of the important features:
+* This has support for <a href="https://github.com/Microsoft/cpprestsdk/wiki/Web-Socket">Web Sockets</a>
+* This also supports multiple platforms including Linux and Mac.</p>
+
+<p>For more features and samples visit Casablanca&rsquo;s official <a href="https://github.com/Microsoft/cpprestsdk/wiki">wiki</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ram Vellanki</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-05-15T12:54:23+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:54 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-plus-plus/'>c++,</a>, <a class='category' href='/blog/categories/coding/'>coding</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk/" data-via="_RCV_" data-counturl="http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/05/17/angular2-seed-project/" title="Next Post: Angular2 Seed Project">Angular2 Seed Project &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'RamVellanki',
+            count: 10,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/vellanki.chandra@gmail.com?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Ram Vellanki
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
