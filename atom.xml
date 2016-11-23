@@ -4,7 +4,7 @@
   <title><![CDATA[Ram's Blog]]></title>
   <link href="http://ramvellanki.github.io/atom.xml" rel="self"/>
   <link href="http://ramvellanki.github.io/"/>
-  <updated>2016-05-18T17:19:54+00:00</updated>
+  <updated>2016-11-23T22:59:28+05:30</updated>
   <id>http://ramvellanki.github.io/</id>
   <author>
     <name><![CDATA[Ram Vellanki]]></name>
@@ -14,9 +14,18 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Test Post]]></title>
+    <link href="http://ramvellanki.github.io/blog/2016/11/23/test-post/"/>
+    <updated>2016-11-23T22:55:44+05:30</updated>
+    <id>http://ramvellanki.github.io/blog/2016/11/23/test-post</id>
+    <content type="html"><![CDATA[<h3>This is a test</h3>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Angular2 Seed Project]]></title>
     <link href="http://ramvellanki.github.io/blog/2016/05/17/angular2-seed-project/"/>
-    <updated>2016-05-17T15:56:22+00:00</updated>
+    <updated>2016-05-17T21:26:22+05:30</updated>
     <id>http://ramvellanki.github.io/blog/2016/05/17/angular2-seed-project</id>
     <content type="html"><![CDATA[<p>I have been working with Angular2 since it&rsquo;s beta.12 and as Angular2 RC1 got released, I thought of creating a Seed project.</p>
 
@@ -45,7 +54,7 @@
   <entry>
     <title type="html"><![CDATA[Working With Casablanca (CPPRESTSDK)]]></title>
     <link href="http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk/"/>
-    <updated>2016-05-15T12:54:23+00:00</updated>
+    <updated>2016-05-15T18:24:23+05:30</updated>
     <id>http://ramvellanki.github.io/blog/2016/05/15/working-with-casablanca-cpprestsdk</id>
     <content type="html"><![CDATA[<h1>Casablanca</h1>
 
